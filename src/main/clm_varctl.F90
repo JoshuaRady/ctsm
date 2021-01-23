@@ -234,7 +234,9 @@ module clm_varctl
   logical, public            :: use_fates_ed_prescribed_phys = .false. ! true => prescribed physiology
   logical, public            :: use_fates_inventory_init = .false.     ! true => initialize fates from inventory
   logical, public            :: use_fates_fixed_biogeog = .false.           ! true => use fixed biogeography mode
+  logical, public            :: use_fates_vm_driver_file = .false.     ! true => Use prescribed Vegetation Managment
   character(len=256), public :: fates_inventory_ctrl_filename = ''     ! filename for inventory control
+  character(len=256), public :: fates_vm_driver_filepath = ''          ! File path for Vegetation Managment driver file
 
   !----------------------------------------------------------
   !  LUNA switches		

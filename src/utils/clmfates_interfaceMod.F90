@@ -59,6 +59,8 @@ module CLMFatesInterfaceMod
    use clm_varctl        , only : use_fates_inventory_init
    use clm_varctl        , only : use_fates_fixed_biogeog
    use clm_varctl        , only : fates_inventory_ctrl_filename
+   use clm_varctl        , only : use_fates_vm_driver_file
+   use clm_varctl        , only : fates_vm_driver_filepath
    use clm_varctl        , only : use_nitrif_denitrif
    use clm_varcon        , only : tfrz
    use clm_varcon        , only : spval 
@@ -267,6 +269,7 @@ module CLMFatesInterfaceMod
      integer                                        :: pass_is_restart
      integer                                        :: pass_cohort_age_tracking
      integer                                        :: pass_biogeog 
+     integer                                        :: pass_vm_driver_init
 
 
      call t_startf('fates_globals')
@@ -404,6 +407,16 @@ module CLMFatesInterfaceMod
         call set_fates_ctrlparms('use_inventory_init',ival=pass_inventory_init)
         
         call set_fates_ctrlparms('inventory_ctrl_file',cval=fates_inventory_ctrl_filename)
+        
+        ! Note: The Vegetation Management namelist settings might need to be overridden given other settings.
+        if(use_fates_vm_driver_file) then
+           pass_vm_driver_init = 1
+        else
+           pass_vm_driver_init = 0
+        end if
+        call set_fates_ctrlparms('use_vm_driver_file',ival=pass_vm_driver_init)
+
+        call set_fates_ctrlparms('vm_driver_filepath',cval=fates_vm_driver_filepath)
         
         if(masterproc)then
            pass_masterproc = 1
