@@ -691,6 +691,20 @@ Full pathname to the inventory initialization control file.
 (Required, if use_fates_inventory_init=T)
 </entry>
 
+<entry id="use_fates_vm_driver_file" type="logical" category="physics"
+        group="clm_inparm" valid_values="" value=".false.">
+Toggle to specify that the Vegetation Management module of FATES should use prescribed management
+specified by a vegetation management event driver file.
+(Vegetation Management is in development and setting use_fates_vm_driver_file = .true. is not a
+experimental and not supported.)
+</entry>
+
+<entry id="fates_vm_driver_filepath" type="char*256" category="datasets"
+       input_pathname="abs" group="clm_inparm" valid_values="" >
+Full pathname to the Vegetation Management event driver file.
+(Required, if use_fates_vm_driver_file = .true.)
+</entry>
+
 <entry id="use_luna" type="logical" category="physics"
         group="clm_inparm" valid_values="" value=".false.">
 Toggle to turn on the LUNA model, to effect Photosynthesis by leaf Nitrogen
